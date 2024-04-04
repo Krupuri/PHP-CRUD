@@ -1,8 +1,8 @@
 <?php
 include 'connect.php';
 
-if(isset($_POST['submit'])){
-    $sql = "UPDATE employee SET
+if (isset($_POST['submit'])) {
+    $sql = "UPDATE employee SET 
         emp_name = '".$_POST['emp_name']."',
         emp_sex = '".$_POST['emp_sex']."',
         emp_add = '".$_POST['emp_add']."',
@@ -11,15 +11,15 @@ if(isset($_POST['submit'])){
         emp_tel = '".$_POST['emp_tel']."',
         emp_in = '".$_POST['emp_in']."',
         bra_id = '".$_POST['bra_id']."'
-        WHERE emp_id = '".mysqli_real_escape_string($connect, $_POST['bra_id'])."' ";
+        WHERE emp_id = '".mysqli_real_escape_string($connect, $_POST['emp_id'])."' ";
 
-        if (mysqli_query($connect, $sql)){
-            echo '<script> alert("อัพเดตข้อมูลเสร็จเรียบร้อย")</script>';
+        if (mysqli_query($connect, $sql)) {
+            echo '<script> alert("แก้ไขข้อมูลเสร็จเรียบร้อย")</script>';
             header('Refresh:0; url= index.php');
-        }else{
-            echo '<script> alert("อัพเดตข้อมูลไม่สำเร็จ")</script>';
-            header('Refresh:0; url= edit.php');
+        } else {
+            echo '<script> alert("แก้ไขข้อมูลไม่สำเร็จ")</script>';
+            header('Refresh:0; url= ../edit.php');
         }
-}
-mysqli_close($connect);
+    }
+    mysqli_close($connect);
 ?>
